@@ -4,7 +4,7 @@ async function videosList() {
     return convertConnection;
 }
 
-async function createVideo(titulo, descricao, url, imagem) {
+async function newVideo(titulo, descricao, url, imagem) {
     const connection = await fetch("http://localhost:3000/videos", {
         method: "POST",
         headers: {
@@ -22,8 +22,15 @@ async function createVideo(titulo, descricao, url, imagem) {
     return convertConnection;
 }
 
+async function searchVideo(searchTerm) {
+    const connection = await fetch(`http://localhost:3000/videos?q=${searchTerm}`)
+
+    const convertConnection = await connection.json();
+    return convertConnection;
+}
 
 export const connectApi = {
     videosList,
-    createVideo
+    newVideo,
+    searchVideo
 };
