@@ -21,10 +21,14 @@ export default function newCard(titulo, descricao, url, imagem) {
 }
 
 async function videosList() {
-    const listAPI = await connectApi.videosList();
-    listAPI.forEach(elemento => list.appendChild(
-        newCard(elemento.titulo, elemento.descricao, elemento.url, elemento.imagem)
-    ));
+    try {
+        const listAPI = await connectApi.videosList();
+        listAPI.forEach(elemento => list.appendChild(
+            newCard(elemento.titulo, elemento.descricao, elemento.url, elemento.imagem)
+        ));
+    } catch {
+        list.innerHTML = `<h2 class="mensagem__titulo">Não foi possível carregar a lista de vídeos.</h2>`;
+    }
 }
 
 videosList();
