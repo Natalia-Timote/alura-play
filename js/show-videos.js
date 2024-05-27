@@ -2,7 +2,7 @@ import { connectApi } from "./connectAPI.js";
 
 const list = document.querySelector('[data-list]');
 
-function newCard(titulo, descricao, url, imagem) {
+export default function newCard(titulo, descricao, url, imagem) {
     const video = document.createElement('li');
     video.className = 'videos__item';
     video.innerHTML = `
